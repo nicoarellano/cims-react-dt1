@@ -1,54 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/x-icon" href="./cims.ico" />
-    <link rel="icon" href="%PUBLIC_URL%/cims.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Digital Twin for Northcrest"
-    />
-    <title>Digital Twin | CIMS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-    -->
+
+<head>
+  <meta charset="utf-8" />
+ 
+
+  <title>Digital Twin | CIMS</title>
+  <link rel="icon" type="image/x-icon" href="./cims.ico" />
+  <link rel="icon" href="%PUBLIC_URL%/cims.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Digital Twin for Northcrest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
     
   </head>
   <body>
-    <header>
-      <a href="http://cims.carleton.ca/#/home"><img src="../static/logos/cims-logo-black.png" alt="CIMSlab"
-          title="Go to CIMS lab Page" height="55px" />
-      </a>
-<!--       <h3 id="model-title">Mapbox viewer</h3>
-      <a class="header-button" href="./cesium-viewer.html" title="Cesium viewer">
-        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid meet">
-          <g transform="translate(0.000000,300.000000) scale(0.100000,-0.100000)">
-            <path
-              d="M1298 2985 c-457 -65 -864 -338 -1092 -731 -146 -251 -218 -544 -202 -824 6 -122 37 -292 57 -316 6 -7 28 -18 48 -24 49 -13 102 2 141 42 17 17 140 175 273 351 133 176 259 337 280 358 146 140 349 141 498 2 27 -25 156 -188 288 -362 131 -174 254 -331 273 -349 65 -62 148 -62 213 1 18 18 117 145 221 282 103 138 208 277 233 310 65 86 110 132 161 165 53 34 158 64 206 58 19 -2 34 0 34 4 0 17 -50 138 -88 215 -211 418 -593 710 -1052 803 -136 28 -358 35 -492 15z m766 -639 c18 -8 46 -31 62 -51 36 -48 40 -128 8 -172 -35 -47 -82 -73 -133 -73 -88 0 -151 64 -151 154 0 113 109 186 214 142z" />
-            <path
-              d="M985 1701 c-44 -27 -58 -45 -329 -403 -199 -264 -258 -336 -304 -368 -55 -40 -133 -70 -179 -70 -13 0 -23 -3 -23 -8 0 -4 20 -42 44 -84 142 -250 358 -460 608 -593 131 -69 228 -105 383 -141 110 -26 136 -28 315 -28 163 0 212 4 297 22 595 129 1050 583 1172 1169 25 120 37 299 27 404 -7 76 -8 76 -48 99 -48 27 -110 24 -155 -8 -16 -11 -144 -173 -285 -359 -140 -186 -275 -356 -298 -377 -23 -21 -68 -50 -99 -65 -47 -22 -70 -26 -146 -26 -78 0 -98 4 -145 27 -30 15 -72 41 -92 58 -20 17 -138 165 -262 329 -292 387 -302 399 -339 422 -40 24 -103 24 -142 0z" />
-          </g>
-        </svg>
-      </a> -->
-      <!-- <a href="https://carleton.ca/"><img
-            src="../static/logos/northcrest_logo.jfif"
-            alt="Northcrest"
-            height="50px"
-          /></a> -->
-    </header>
+
     <noscript>This page is required for the take data from the root file of the Mapbox-React Application.</noscript>
-    <a href="http://cims.carleton.ca/#/home"><img src="../static/logos/cims-logo-black.png" alt="CIMSlab"
-      title="Go to CIMS lab Page" height="55px" />
-    </a>
-    <div id="root"></div>
-    <!--
-    -->
-  </body>
+  <script src="../bundle.js"></script>
+  <div id="root"></div>
+ 
+</body>
+
 </html>

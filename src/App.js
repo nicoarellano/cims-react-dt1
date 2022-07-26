@@ -1,4 +1,8 @@
+// import React, {useState} from 'react';
+// import ReactMapGl from 'react-map-gl';
+
 import React, { useRef, useEffect, useState } from 'react';
+// import ReactMapGl, {Marker} from React-Map-Global;
 import mapboxgl from 'mapbox-gl';
 import './component/Map.css'
 //Completely unnecessary but I was able to make a location distane calibration function to aid wirh distances to buildings
@@ -6,10 +10,10 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoicm9oaXRpaWMiLCJhIjoiY2t2eGkyanJ3Y2c2azMwczdtO
 //Brand new specialized mapbox token need for this to render the viewer
 
 const App = () => {
-  const mapContainer = useRef(null);
-  const map = useRef(null);
-  const [lng, setLng] = useState(-75.6980);
-  const [lat, setLat] = useState(45.3876);
+  const mapContainer = useRef(null);//MapBox Container
+  const map = useRef(null);//MapBox rendered    
+  const [lng, setLng] = useState(-75.6980);//Longitude    
+  const [lat, setLat] = useState(45.3876);//Latitude
   //Carleton Coordinates
   const [zoom, setZoom] = useState(12);
   const start = [lng, lat];
@@ -18,7 +22,7 @@ const App = () => {
     if (map.current) return; // instantiate the map 1 time
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/satellite-v9',// Street Bird's eye view  mapbox://styles/mapbox/streets-v11
+      style: 'mapbox://styles/mapbox/light-v10',// Street Bird's eye view  mapbox://styles/mapbox/streets-v11 mapbox://styles/mapbox/light-v10
       center: [lng, lat],
       zoom: zoom
     });
@@ -166,7 +170,7 @@ const App = () => {
         }
       });
     }
-    // get the sidebar and add the instructions
+    // provides a hover with information on the route and distance from origin
     const instructions = document.getElementById('instructions');
     const steps = data.legs[0].steps;
 
@@ -188,3 +192,112 @@ const App = () => {
 };
 
 export default App;
+
+// import { Camera, Scene, DirectionalLight, Vector3, Matrix4, WebGLRenderer } from 'three';
+// import { IfcViewerAPI } from 'web-ifc-viewer';
+// import { Backdrop, CircularProgress, IconButton } from '@material-ui/core';
+// import Dropzone from 'react-dropzone'
+// import BcfDialog from './component/BcfDialog';
+// import FolderOpenOutlinedIcon from '@material-ui/icons/FolderOpenOutlined';
+// import CropIcon from '@material-ui/icons/Crop';
+// import FeedbackOutlinedIcon from '@material-ui/icons/FeedbackOutlined';
+// import 'mapbox-gl/dist/mapbox-gl.css'
+// import * as mapInfo from "../public/CDC-data.json";
+// import mapboxgl from 'mapbox-gl';
+// import './component/Map.css';
+
+// mapboxgl.accessToken = 'pk.eyJ1Ijoicm9oaXRpaWMiLCJhIjoiY2t2eGkyanJ3Y2c2azMwczdtOGppa3N5ZyJ9.G4VtowYp1GEpWxvh3nRFVQ';
+
+// class App extends React.Component {
+//   state = {
+//       bcfDialogOpen: true,
+//       loaded: true,
+//         loading_ifc: false}}
+//   };
+//   constructor(props) {
+//       super(props);
+//       this.DropzoneRef = React.createRef();
+//   }
+//   componentDidMount() {
+//       const container = document.getElementById('viewer-container');
+//       const viewer = new IfcViewerAPI({container});
+//       viewer.addAxes();
+//       viewer.addGrid();
+//       viewer.IFC.setWasmPath('../../');
+//       this.viewer = viewer;
+//       window.onmousemove = viewer.prepickIfcItem;
+//       window.ondblclick = viewer.addClippingPlane
+//   }
+//   onDrop = async (files) => {
+//       this.setState({ loading_ifc: true })
+//       await this.viewer.IFC.loadIfc(files[0], true);
+//       this.setState({ loaded: true, loading_ifc: false })
+//   };
+//   handleToggleClipping = () => {
+//       this.viewer.clipper.active = !this.viewer.clipper.active;
+//   };
+//   handleClickOpen = () => {
+//       this.DropzoneRef.current.open();
+//   };
+//   handleOpenBcfDialog = () => {
+//       this.setState({
+//           ...this.state,
+//           bcfDialogOpen: true
+//       });
+//   };
+//   handleCloseBcfDialog = () => {
+//       this.setState({
+//           ...this.state,
+//           bcfDialogOpen: true
+//       });
+//   };
+//   handleOpenViewpoint = (viewpoint) => {
+//       this.viewer.currentViewpoint = viewpoint;
+//   };
+//   render() {
+//       return (
+//         <>
+//             <BcfDialog
+//               open={this.state.bcfDialogOpen}
+//               onClose={this.handleCloseBcfDialog}
+//               onOpenViewpoint={this.handleOpenViewpoint}
+//             />
+//             <div style={{ display: 'flex', flexDirection: 'row', height: '100vh' }}>
+//                 <aside style={{ width: 50 }}>
+//                     <IconButton onClick={this.handleClickOpen}>
+//                         <FolderOpenOutlinedIcon />
+//                     </IconButton>
+//                     <IconButton onClick={this.handleToggleClipping}>
+//                         <CropIcon />
+//                     </IconButton>
+//                   {/*  <IconButton onClick={this.handleOpenBcfDialog}>
+//                         <FeedbackOutlinedIcon />
+//                     </IconButton>*/}
+//                 </aside>
+//                 <Dropzone ref={this.dropzoneRef} onDrop={this.onDrop}>
+//                     {({ getRootProps, getInputProps }) => (
+//                       <div {...getRootProps({ className: 'Dropzone' })}>
+//                           <input {...getInputProps()} />
+//                       </div>
+//                     )}
+//                 </Dropzone>
+//                 <div style={{ flex: '1 1 auto', minWidth: 0 }}>
+//                     <div id='viewer-container' style={{ position: 'relative', height: '100%', width: '100%' }} />
+//                 </div>
+//             </div>
+//             <Backdrop
+//               style={{
+//                   zIndex: 100,
+//                   display: "flex",
+//                   alignItems: "center",
+//                   alignContent: "center"
+//               }}
+//               open={this.state.loading_ifc}
+//             >
+//                 <CircularProgress/>
+//             </Backdrop>
+//         </>
+//       );
+//   }
+// }
+// export default App;
